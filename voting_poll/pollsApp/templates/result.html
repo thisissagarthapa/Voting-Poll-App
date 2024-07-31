@@ -1,0 +1,42 @@
+<!-- result.html -->
+{% extends "dashboard.html" %}
+
+{% block home %}
+  
+{% endblock home %}
+{% block content %}
+<section class="home" id="home">
+    <div class="home-content">
+        <h1 class="text-center" style="font-size: 2.5rem; margin-bottom: 40px;">Result of <span>Voting Polls</span></h1>
+        {% for question in questions %}
+        <h2 style="font-size: 2rem; margin-bottom: 20px;">{{ question.text }}</h2>
+        <div class="table-responsive" style="margin-bottom: 40px;">
+            <table class="table table-bordered" style="width: 100%; padding: 20px;">
+                <thead class="thead-dark">
+                    <tr>
+                        <th class="text-secondary" style="font-size: 1.8rem; padding: 10px;">Option</th>
+                        <th class="text-secondary" style="font-size: 1.8rem; padding: 10px;">Votes</th>
+                        <th class="text-secondary" style="font-size: 1.8rem; padding: 10px;">Percentage</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for option in question.options.all %}
+                    <tr>
+                        <td style="font-size: 1.6rem; padding: 10px; color: white;">{{ option.text }}</td>
+                        <td style="font-size: 1.6rem; padding: 10px; color: white;">{{ option.votes }}</td>
+                        <td style="font-size: 1.6rem; padding: 10px; color: white;">
+                            {{ option.percentage|floatformat:2 }}% 
+                            ({{ option.votes }} out of {{ question.total_votes }})
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        {% if not forloop.last %}
+            <hr style="margin-bottom: 40px;">
+        {% endif %}
+        {% endfor %}
+    </div>
+</section>
+{% endblock %}

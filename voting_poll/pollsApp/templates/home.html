@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+{% load static %}
+   <!-- home page section -->
+   <section class="home" id="home">
+    <div class="home-content">
+        <h1 class="text-center" style="font-size: 3rem;">Welcome to Your </h1>
+        <h1  class="text-center" style="font-size: 3rem;"><span class="mulitple-text text-center">Voting Poll </span>App </h1>
+        <h3 class="custom-h3" style="font-size: 2rem; ">Designed to help you vote on different multiple questions and get precise results in the form of votes and percentages. Whether you're a professional, a student, or just participating in a poll, our system simplifies the voting process and ensures accurate and transparent results.</h3>
+    </div>
+    <div class="home-img">
+        <img src="{% static 'images/voting.jpg' %}" alt="sagar">
+    </div>
+   </section>
+
+    {% endblock content %}

@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Voting Polls App </title>
+    <!-- boxicons cdn -->
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <!-- bootstraph css cdn link -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'css/dashboard.css' %}">
+    <style>
+    .logo:hover {
+    color: inherit;
+     }
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+    text-decoration: none;
+    scroll-behavior: smooth;
+    outline: none;    
+    border: none;
+}
+
+:root {
+    --bg-color: #1f242d;
+    --second-bgcolor: #323946;
+    --text-color: white;
+    --main-color: #0ef;
+}
+/* Table Styling */
+.question-table {
+    height: 80vh;
+    width: 80%;
+    margin: 0 auto;
+    border-collapse: collapse;
+    background-color: var(--second-bgcolor);
+    color: var(--text-color);
+    border-radius: 0.5rem;
+}
+
+.question-table th,
+.question-table td {
+    padding: 1.5rem;
+    text-align: left;
+    border-bottom: 0.1rem solid var(--main-color);
+    font-size: 2rem;
+}
+
+.question-table th {
+    background-color:black;
+    color:var();
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+.question-table tbody tr:nth-of-type(even) {
+    background-color: var(--bg-color);
+}
+
+.question-table tbody tr:hover {
+    background-color: var(--main-color);
+    color: var(--second-bgcolor);
+}
+    </style>
+</head>
+<body>
+     <!--  Header design -->
+   <header class="header">
+    <a href="#" class="logo">Voting Polls App</a>
+    <i class="bx bx-menu" id="menu-icon"></i>
+    <navbar class="navbar">
+        <a href="{% url 'dashboard' %}" class=" {% if request.path == '/dashboard/' %}active{% endif %}">Dashboard</a>
+        <a href="{% url 'vote' %}" class=" {% if request.path == '/vote/' %}active{% endif %}">Votes</a>
+        <a href="{% url 'result' %}" class=" {% if request.path == '/result/' %}active{% endif %}">Result</a>
+        <a href="{% url 'log_out' %}"><button style="font-size: 1.5rem;" type="button" class="btn btn-info py-2 px-3 ">Logout</button></a>
+    </navbar>
+   </header>
+
+{% block home %}
+ </header>
+   <!-- dashboard-home -->
+   <section class="home" id="home">
+    <div class="home-content">
+        <h1 class="text-center" style="font-size: 3rem;">Welcome to Your Voting Poll App </h1>
+        <h1  class="text-center" style="font-size: 3rem;"><span class="mulitple-text text-center"> dashboard</span> </h1>        
+    </div>
+   </section>
+   {% endblock home %}
+
+
+<!-- Content block -->
+    <div class="content">
+        {% block content %}{% endblock %}
+    </div>
+
+
+
+
+
+    <!-- foote-section design -->
+<footer class="footer">
+    <div class="footer-text">
+        <p>copyright & copy; 2024 by <span>Sagar Thapa</span>|All rights resolved</p>
+    </div>
+    <div class="footer-iconTop">
+        <a href="#home"><i class='bx bx-up-arrow-alt'></i></a>
+    </div>
+   <!-- bootstraph js cdn link -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+   <script src="{% static 'js/index.js' %}"></script>
+</body>
+</html>

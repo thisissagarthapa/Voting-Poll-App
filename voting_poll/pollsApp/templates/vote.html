@@ -1,0 +1,37 @@
+<!-- vote.html -->
+{% extends "dashboard.html" %}
+
+{% block home %}
+  
+{% endblock home %}
+{% block content %}
+<section class="home" id="home">
+    <div class="home-content">
+        <h1 class="text-center" style="font-size: 2.5rem;">Vote <span>Here</span></h1>
+        
+        <!-- Display questions and options -->
+        <div class="question-container mt-5">
+            {% for question in questions %}
+            <form id="question-{{ forloop.counter }}" action="{% url 'vote' %}" method="post" style="margin-bottom: 20px;">
+                {% csrf_token %}
+                <div class="question">
+                    <h3 style="font-size: 2rem;">{{ forloop.counter }}. {{ question.text }}</h3>
+                    <ul class="answers list-unstyled" style="font-size: 1.8rem;">
+                        {% for option in question.options.all %}
+                        <li style="margin-bottom: 10px;">
+                            <label>
+                                <input type="radio" name="candidate_vote" value="{{ option.id }}">
+                                {{ option.text }}
+                            </label>
+                        </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+                <button type="submit" class="btn btn-primary px-4 py-3 fs-3 vote-btn mt-3">Vote</button>
+            </form>
+            <hr style="margin-bottom: 40px;">
+            {% endfor %}
+        </div>
+    </div>
+</section>
+{% endblock %}
